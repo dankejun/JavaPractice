@@ -1,4 +1,4 @@
-package com.lainxi.java.view;
+package com.lianxi.java.view;
 
 import com.lianxi.java.domain.Employee;
 import com.lianxi.java.domain.Progrommer;
