@@ -52,12 +52,19 @@ public class TeamService {
 //        该员工已是某团队成员
 //        该员正在休假，无法添加
         Progrommer progrommer = (Progrommer)e;//不会出现ClassCastException
-        if ("BUSY".equalsIgnoreCase(progrommer.getStatus().getNAME())) {
-            throw new TeamException("该员工已是某团队成员!");
+//        if ("BUSY".equalsIgnoreCase(progrommer.getStatus().getNAME())) {
+//            throw new TeamException("该员工已是某团队成员!");
+//        }
+//        if ("VOCATION".equalsIgnoreCase(progrommer.getStatus().getNAME())) {
+//            throw new TeamException("该员正在休假，无法添加!");
+//        }
+        switch (progrommer.getStatus()) {//byte\short\char\int\String\枚举类
+            case BUSY:
+                throw new TeamException("该员工已是某团队成员!");
+            case VOCATION:
+                throw new TeamException("该员正在休假，无法添加!");
         }
-        if ("VOCATION".equalsIgnoreCase(progrommer.getStatus().getNAME())) {
-            throw new TeamException("该员正在休假，无法添加!");
-        }
+
 //        团队中至多只能有一名架构师
 //        团队中至多只能有两名设计师
 //        团队中至多只能有三名程序员
